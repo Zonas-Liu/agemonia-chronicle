@@ -1,0 +1,280 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+    --radius: 0.625rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    background-color: #0a0e1a;
+    color-scheme: dark;
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply text-[#cdd4e4] antialiased;
+    background:
+      radial-gradient(1200px 700px at 80% -10%, #1a2547 0%, transparent 60%),
+      radial-gradient(900px 600px at 10% 110%, #16203c 0%, transparent 55%),
+      linear-gradient(180deg, #0a0e1a 0%, #131a2e 55%, #0a0e1a 100%);
+    background-attachment: fixed;
+    font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+  }
+}
+
+/* ---------- 阿格莫尼亚主题 ---------- */
+
+.font-serif-sc {
+  font-family: "STKaiti", "KaiTi", "STSong", "SimSun", serif;
+}
+
+/* 正文中 **加粗** 的金色高亮 */
+.hl-gold {
+  color: #d9b64f;
+  font-weight: 600;
+  text-shadow: 0 0 14px rgba(217, 182, 79, 0.25);
+}
+
+/* 滚动渐显 */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 羊皮纸 / 卷轴卡片 */
+.parchment {
+  position: relative;
+  color: #3a2f1d;
+  background:
+    radial-gradient(140% 100% at 50% 0%, rgba(120, 90, 40, 0.10) 0%, transparent 55%),
+    repeating-linear-gradient(0deg, rgba(120, 90, 40, 0.045) 0 2px, transparent 2px 5px),
+    linear-gradient(160deg, #efe4c8 0%, #e8dcc0 45%, #ddcda6 100%);
+  border: 1px solid #8a6d3b;
+  outline: 1px solid rgba(138, 109, 59, 0.35);
+  outline-offset: 3px;
+  border-radius: 6px;
+  box-shadow:
+    0 1px 0 rgba(255, 245, 220, 0.5) inset,
+    0 14px 34px -12px rgba(0, 0, 0, 0.65);
+  padding: 1.75rem 2rem;
+}
+.parchment::before,
+.parchment::after {
+  content: "";
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(120, 90, 40, 0.55), transparent);
+}
+.parchment::before { top: 10px; }
+.parchment::after { bottom: 10px; }
+.parchment-title {
+  font-family: "STKaiti", "KaiTi", "STSong", "SimSun", serif;
+  text-align: center;
+  letter-spacing: 0.4em;
+  font-size: 0.85rem;
+  color: #6b5326;
+  margin-bottom: 1rem;
+}
+
+/* 首字下沉 */
+.dropcap::first-letter {
+  font-family: "STKaiti", "KaiTi", "STSong", "SimSun", serif;
+  float: left;
+  font-size: 3.1em;
+  line-height: 0.9;
+  padding: 0.08em 0.14em 0 0;
+  color: #d9b64f;
+  text-shadow: 0 2px 18px rgba(217, 182, 79, 0.35);
+}
+
+/* 装饰分隔符（替代 ---） */
+.ornament-divider {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin: 2.4rem auto;
+  max-width: 26rem;
+  color: #a9882f;
+}
+.ornament-divider::before,
+.ornament-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #a9882f88);
+}
+.ornament-divider::after {
+  background: linear-gradient(90deg, #a9882f88, transparent);
+}
+
+/* 星光粒子 */
+.starfield {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.star {
+  position: absolute;
+  border-radius: 9999px;
+  background: #e8f0ff;
+  animation: twinkle var(--tw-dur, 4s) ease-in-out var(--tw-delay, 0s) infinite;
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0.12; transform: scale(0.8); }
+  50% { opacity: 0.9; transform: scale(1.15); }
+}
+
+/* 时间轴 */
+.timeline-rail {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 19px;
+  width: 2px;
+  background: linear-gradient(180deg, transparent, #a9882f66 8%, #a9882f66 92%, transparent);
+}
+@media (min-width: 768px) {
+  .timeline-rail { left: 50%; transform: translateX(-1px); }
+}
+.timeline-node {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+}
+.timeline-node:hover {
+  transform: scale(1.025) translateY(-2px);
+  border-color: #a9882faa;
+  box-shadow: 0 18px 40px -16px rgba(0, 0, 0, 0.8), 0 0 24px -6px rgba(169, 136, 47, 0.35);
+}
+.timeline-dot {
+  position: absolute;
+  left: 19px;
+  top: 1.9rem;
+  width: 12px;
+  height: 12px;
+  transform: translateX(-5px);
+  border-radius: 9999px;
+  background: #131a2e;
+  border: 2px solid #a9882f;
+  box-shadow: 0 0 12px rgba(169, 136, 47, 0.7);
+}
+@media (min-width: 768px) {
+  .timeline-dot { left: 50%; transform: translateX(-6px); }
+}
+
+/* 英雄卡 */
+.hero-card {
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+}
+.hero-card:hover {
+  border-color: #a9882f99;
+  box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.85), 0 0 30px -8px rgba(169, 136, 47, 0.3);
+}
+.hero-card .hero-portrait {
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), filter 0.45s ease;
+  filter: drop-shadow(0 14px 22px rgba(0, 0, 0, 0.6));
+}
+.hero-card:hover .hero-portrait {
+  transform: translateY(-10px) scale(1.03);
+  filter: drop-shadow(0 26px 30px rgba(0, 0, 0, 0.7));
+}
+
+/* 卡片通用 */
+.night-card {
+  background: linear-gradient(165deg, rgba(24, 32, 56, 0.85), rgba(13, 18, 33, 0.92));
+  border: 1px solid rgba(169, 136, 47, 0.28);
+  border-radius: 8px;
+  box-shadow: 0 10px 30px -14px rgba(0, 0, 0, 0.7);
+}
+
+/* 章节小标题 */
+.chapter-h2 {
+  font-family: "STKaiti", "KaiTi", "STSong", "SimSun", serif;
+  font-size: 1.4rem;
+  letter-spacing: 0.15em;
+  color: #d9b64f;
+  margin: 2.2rem 0 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.chapter-h2::before,
+.chapter-h2::after {
+  content: "";
+  height: 1px;
+  width: 2.2rem;
+  background: linear-gradient(90deg, transparent, #a9882f88);
+}
+.chapter-h2::after {
+  flex: 1;
+  background: linear-gradient(90deg, #a9882f88, transparent);
+}
