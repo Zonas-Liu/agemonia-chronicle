@@ -12,7 +12,7 @@ export function Navbar({ active }: { active: string }) {
     <header className="fixed inset-x-0 top-0 z-50 border-b border-[#a9882f33] bg-[#0a0e1acc] backdrop-blur-md">
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4 sm:px-6">
         <a href="#/" className="flex items-center gap-2.5">
-          <img src="images/Logo.png" alt="啊对对队徽标" className="h-7 w-7 rounded-sm ring-1 ring-[#a9882f66]" />
+          <img src="images/team-logo.png" alt="啊对对队队徽" className="h-8 w-8 rounded-full ring-1 ring-[#a9882f66]" />
           <span className="font-serif-sc text-lg tracking-widest text-[#e8dcc0]">
             啊对对队
             <span className="ml-2 hidden text-xs tracking-[0.3em] text-[#a9882f] sm:inline">编年史</span>

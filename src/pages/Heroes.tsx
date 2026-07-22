@@ -43,7 +43,7 @@ export default function Heroes() {
                     className="absolute right-4 top-4 rounded-full border px-3 py-1 text-xs tracking-[0.2em]"
                     style={{ borderColor: `${ac.ring}66`, color: ac.ring }}
                   >
-                    {ac.label}
+                    {h.cls.split('（')[0]}
                   </span>
                 </div>
 

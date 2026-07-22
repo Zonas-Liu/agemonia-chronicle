@@ -2,6 +2,13 @@ import { chapters } from '@/data/chapters'
 import { Reveal } from '@/components/Reveal'
 import { cn } from '@/lib/utils'
 
+const PARTY_SCENES = [
+  { img: 'images/scene-lunara.png', name: '露娜拉', caption: '琥珀之门的流亡圣骑士' },
+  { img: 'images/scene-jonai.png', name: '乔奈', caption: '身世成谜的裂隙剑圣' },
+  { img: 'images/scene-zuvasai.png', name: '祖法赛', caption: '算账成瘾的珂蓝安水法师' },
+  { img: 'images/scene-torrax.png', name: '泰拉克斯', caption: '想不起名字的奥古拉守护者' },
+]
+
 export default function Chronicle() {
   return (
     <div className="mx-auto max-w-6xl px-4 pb-24 pt-24 sm:px-6">
@@ -11,6 +18,28 @@ export default function Chronicle() {
         <p className="mx-auto mt-4 max-w-xl text-center text-sm leading-7 text-[#a9b4cc]">
           六章正篇与两段幕间，一条时间轴。点击任意节点，细读该章完整正文、定场诗与战报。
         </p>
+      </Reveal>
+
+      {/* 征途群像 · 官方场景插画 */}
+      <Reveal delay={120}>
+        <div className="mt-12 grid grid-cols-2 gap-4 lg:grid-cols-4">
+          {PARTY_SCENES.map((s) => (
+            <figure key={s.name} className="night-card group overflow-hidden p-3">
+              <div className="flex h-36 items-end justify-center overflow-hidden rounded bg-[radial-gradient(ellipse_at_bottom,#1a2138_0%,#0a0e1a_78%)] sm:h-44">
+                <img
+                  src={s.img}
+                  alt={`${s.name}官方场景插画`}
+                  loading="lazy"
+                  className="max-h-full object-contain drop-shadow-[0_8px_20px_rgba(0,0,0,0.75)] transition-transform duration-300 group-hover:scale-105"
+                />
+              </div>
+              <figcaption className="mt-3 text-center">
+                <p className="font-serif-sc text-base tracking-[0.25em] text-[#e8dcc0]">{s.name}</p>
+                <p className="mt-1 text-[11px] tracking-wider text-[#8fa3cf]">{s.caption}</p>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
       </Reveal>
 
       <div className="relative mt-14">
