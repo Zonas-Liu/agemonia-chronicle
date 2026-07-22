@@ -5,12 +5,14 @@ Used because direct git push to github.com is blocked on this network,
 while api.github.com is reachable. Reads GH_TOKEN from the environment.
 """
 import base64
+import hashlib
 import json
 import os
 import sys
 import time
 import urllib.request
 import urllib.error
+from concurrent.futures import ThreadPoolExecutor
 
 REPO = "Zonas-Liu/agemonia-chronicle"
 API = f"https://api.github.com/repos/{REPO}"
@@ -46,21 +48,31 @@ def req(method, url, payload=None):
             raise
 
 
-def upload(path, branch, message):
+def local_blob_sha(path):
     with open(path, "rb") as f:
-        content = base64.b64encode(f.read()).decode()
+        data = f.read()
+    return hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest(), data
+
+
+def upload(path, branch, message):
+    blob_sha, raw = local_blob_sha(path)
+    content = base64.b64encode(raw).decode()
     rel = os.path.relpath(path, DIST).replace(os.sep, "/")
     payload = {"message": message, "content": content, "branch": branch}
-    # If file already exists on the branch, its sha is required for update.
+    # If file already exists on the branch, its sha is required for update;
+    # if the content is unchanged (same blob sha), skip the upload entirely.
     try:
         status, existing = req("GET", f"{API}/contents/{rel}?ref={branch}")
         if status == 200 and isinstance(existing, dict) and "sha" in existing:
+            if existing["sha"] == blob_sha:
+                print(f"  unchanged {rel}", flush=True)
+                return
             payload["sha"] = existing["sha"]
     except RuntimeError as e:
         if "-> 404" not in str(e):
             raise
     req("PUT", f"{API}/contents/{rel}", payload)
-    print(f"  uploaded {rel}")
+    print(f"  uploaded {rel}", flush=True)
 
 
 def main():
@@ -97,8 +109,11 @@ def main():
         req("POST", f"{API}/git/refs", {"ref": f"refs/heads/{BRANCH}", "sha": sha})
         print(f"created branch {BRANCH} at {sha[:8]}")
 
-    for path in files:
-        upload(path, BRANCH, "deploy site")
+    # index.html 先行（分支初始化语义），其余并发上传
+    upload(index_html, BRANCH, "deploy site")
+    rest = [p for p in files if os.path.basename(p) != "index.html"]
+    with ThreadPoolExecutor(max_workers=6) as pool:
+        list(pool.map(lambda p: upload(p, BRANCH, "deploy site"), rest))
 
     print("all files deployed")
 
