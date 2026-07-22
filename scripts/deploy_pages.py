@@ -71,8 +71,23 @@ def upload(path, branch, message):
     except RuntimeError as e:
         if "-> 404" not in str(e):
             raise
-    req("PUT", f"{API}/contents/{rel}", payload)
-    print(f"  uploaded {rel}", flush=True)
+    # 并发 PUT 在同一分支上会竞争提交头，409 时重新拉取 sha 重试
+    for attempt in range(4):
+        try:
+            req("PUT", f"{API}/contents/{rel}", payload)
+            print(f"  uploaded {rel}", flush=True)
+            return
+        except RuntimeError as e:
+            if "-> 409" in str(e) and attempt < 3:
+                time.sleep(2)
+                try:
+                    _s, existing = req("GET", f"{API}/contents/{rel}?ref={branch}")
+                    if isinstance(existing, dict) and "sha" in existing:
+                        payload["sha"] = existing["sha"]
+                except RuntimeError:
+                    pass
+                continue
+            raise
 
 
 def main():
