@@ -65,9 +65,9 @@ export default function Home() {
       {/* 全屏横幅 */}
       <section className="relative flex min-h-[92vh] items-center justify-center overflow-hidden">
         <img
-          src="images/bg.jpg"
-          alt=""
-          className="absolute inset-0 h-full w-full object-cover opacity-55"
+          src="images/hero-main.jpg"
+          alt="四位英雄眺望裂天者的主视觉"
+          className="absolute inset-0 h-full w-full object-cover opacity-65"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#0a0e1a66] via-[#0a0e1a2e] to-[#0a0e1a]" />
         <Starfield />

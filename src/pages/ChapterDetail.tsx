@@ -32,7 +32,66 @@ export default function ChapterDetail({ id }: { id: string }) {
   let firstParaDone = false
 
   return (
-    <div className="pb-24 pt-20">
+    <div className="relative pb-24 pt-20">
+      {/* 氛围背景：本章场景晕染，填充两侧留白 */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
+        <img
+          src={`images/banner-${chapter.id}.jpg`}
+          alt=""
+          className="h-full w-full scale-110 object-cover opacity-[0.12] blur-2xl"
+        />
+        <div className="absolute inset-0 bg-[#0a0e1acc]" />
+      </div>
+
+      {/* 左侧栏：竖排章名（宽屏显示） */}
+      <aside
+        aria-hidden
+        className="pointer-events-none fixed left-5 top-1/2 z-20 hidden -translate-y-1/2 flex-col items-center gap-4 xl:flex 2xl:left-10"
+      >
+        <span className="font-serif-sc text-xs tracking-[0.35em] text-[#a9882f80] [writing-mode:vertical-rl]">
+          {chapter.order}
+        </span>
+        <span className="h-20 w-px bg-gradient-to-b from-transparent via-[#a9882f55] to-transparent" />
+        <span className="font-serif-sc text-xl tracking-[0.45em] text-[#e8dcc099] [writing-mode:vertical-rl]">
+          {chapter.shortTitle}
+        </span>
+        <span className="h-20 w-px bg-gradient-to-b from-transparent via-[#a9882f55] to-transparent" />
+        <span className="text-[10px] tracking-[0.3em] text-[#77809a80] [writing-mode:vertical-rl]">
+          AGEMONIA
+        </span>
+      </aside>
+
+      {/* 右侧栏：本章指引卡（宽屏显示） */}
+      <aside className="fixed right-5 top-28 z-20 hidden w-44 xl:block 2xl:right-10">
+        <div className="night-card overflow-hidden">
+          <img src={`images/banner-${chapter.id}.jpg`} alt="" className="h-24 w-full object-cover" />
+          <div className="space-y-1.5 p-3.5 text-[11px] leading-5 text-[#8fa3cf]">
+            <p className="font-serif-sc text-xs tracking-[0.25em] text-[#d9b64f]">本 章 指 引</p>
+            <p>📍 {chapter.location}</p>
+            <p>🕰 {chapter.time}</p>
+          </div>
+        </div>
+        <nav className="mt-3 space-y-2 text-[11px] tracking-wider">
+          {prev && (
+            <a
+              href={`#/chapter/${prev.id}`}
+              className="night-card block p-2.5 text-[#8fa3cf] transition-colors hover:text-[#d9b64f]"
+            >
+              ← {prev.order}
+            </a>
+          )}
+          {next && (
+            <a
+              href={`#/chapter/${next.id}`}
+              className="night-card block p-2.5 text-right text-[#8fa3cf] transition-colors hover:text-[#d9b64f]"
+            >
+              {next.order} →
+            </a>
+          )}
+        </nav>
+      </aside>
+
+      <div className="relative z-10">
       {/* 章首 */}
       <section className="relative overflow-hidden py-14">
         <img src="images/bg_dark.jpg" alt="" className="absolute inset-0 h-full w-full object-cover opacity-20" />
@@ -240,6 +299,7 @@ export default function ChapterDetail({ id }: { id: string }) {
           )}
         </nav>
       </article>
+      </div>
     </div>
   )
 }
