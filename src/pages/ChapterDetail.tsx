@@ -59,6 +59,21 @@ export default function ChapterDetail({ id }: { id: string }) {
         </div>
       </section>
 
+      {/* 章节场景横幅 */}
+      <Reveal>
+        <div className="mx-auto max-w-5xl px-4 pb-4 sm:px-6">
+          <img
+            src={`images/banner-${chapter.id}.jpg`}
+            alt={`${chapter.shortTitle} · 场景插画`}
+            loading="lazy"
+            className="w-full rounded-lg border border-[#a9882f33] shadow-[0_20px_60px_rgba(0,0,0,0.6)]"
+          />
+          <p className="mt-3 text-center text-[11px] tracking-[0.2em] text-[#5a627a]">
+            ◈ 场景插画 · AI 依据本章剧情绘制 ◈
+          </p>
+        </div>
+      </Reveal>
+
       {/* 正文 */}
       <article className="mx-auto max-w-3xl px-4 sm:px-6">
         {chapter.blocks.map((b, i) => {

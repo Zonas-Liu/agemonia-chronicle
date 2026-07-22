@@ -57,7 +57,13 @@ export default function Chronicle() {
                   )}
                   delay={80}
                 >
-                  <a href={`#/chapter/${c.id}`} className="timeline-node night-card block p-6 sm:p-7">
+                  <a href={`#/chapter/${c.id}`} className="timeline-node night-card block overflow-hidden p-6 sm:p-7">
+                    <img
+                      src={`images/banner-${c.id}.jpg`}
+                      alt={`${c.shortTitle}场景缩略图`}
+                      loading="lazy"
+                      className="-mx-6 -mt-6 mb-5 h-36 w-[calc(100%+3rem)] max-w-none object-cover opacity-90 transition-opacity hover:opacity-100 sm:-mx-7 sm:-mt-7 sm:w-[calc(100%+3.5rem)]"
+                    />
                     <div className="flex items-baseline justify-between gap-3">
                       <span className={cn(
                         'font-serif-sc text-sm tracking-[0.3em]',
