@@ -16,7 +16,7 @@ export default function Chronicle() {
         <p className="text-center text-xs tracking-[0.5em] text-[#a9882f]">THE CHRONICLE</p>
         <h1 className="mt-3 text-center font-serif-sc text-4xl tracking-[0.3em] text-[#f0e6cd]">编年史</h1>
         <p className="mx-auto mt-4 max-w-xl text-center text-sm leading-7 text-[#a9b4cc]">
-          六章正篇与两段幕间，一条时间轴。点击任意节点，细读该章完整正文、定场诗与战报。
+          八章正篇与两段幕间，一条时间轴。点击任意节点，细读该章完整正文、定场诗与战报。
         </p>
       </Reveal>
 
@@ -62,6 +62,10 @@ export default function Chronicle() {
                       src={`images/banner-${c.id}.jpg`}
                       alt={`${c.shortTitle}场景缩略图`}
                       loading="lazy"
+                      onError={(e) => {
+                        const wrap = e.currentTarget.closest('div')
+                        if (wrap) wrap.style.display = 'none'
+                      }}
                       className="-mx-6 -mt-6 mb-5 h-36 w-[calc(100%+3rem)] max-w-none object-cover opacity-90 transition-opacity hover:opacity-100 sm:-mx-7 sm:-mt-7 sm:w-[calc(100%+3.5rem)]"
                     />
                     <div className="flex items-baseline justify-between gap-3">

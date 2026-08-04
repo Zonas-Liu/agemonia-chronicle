@@ -44,7 +44,7 @@ function Starfield({ count = 90 }: { count?: number }) {
 }
 
 const STATS = [
-  { label: '已历章节', value: '8 章', note: '六章正篇 · 两段幕间' },
+  { label: '已历章节', value: '8 章', note: '八章正篇 · 两段幕间' },
   { label: '团队状态', value: '全员存活', note: '死亡物品清单：仅蘑菇若干' },
   { label: '信标进度', value: '1 / 3', note: '艾伊恩宝珠已归位裂天者' },
   { label: '当前使命', value: '寻找双珠', note: '奥古法宝珠 · 菲洛森宝珠' },
@@ -139,8 +139,8 @@ export default function Home() {
                   而黑暗之球暗克苏宝珠——切不可寻觅。
                 </p>
               </div>
-              <a href="#/chapter/ch5" className="shrink-0 rounded border border-[#a9882f66] px-5 py-2.5 font-serif-sc text-sm tracking-[0.25em] text-[#d9b64f] transition-colors hover:bg-[#a9882f1e]">
-                回顾第五章 →
+    <a href="#/chapter/ch8" className="shrink-0 rounded border border-[#a9882f66] px-5 py-2.5 font-serif-sc text-sm tracking-[0.25em] text-[#d9b64f] transition-colors hover:bg-[#a9882f1e]">
+      回顾第八章 →
               </a>
             </div>
           </div>

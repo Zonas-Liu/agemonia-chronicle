@@ -1,7 +1,7 @@
 # 啊对对队 · 阿格莫尼亚编年史
 
 一场仍在进行中的 [Agemonia](https://agemonia.com) 跑团战役记录网站：
-六章正篇 + 两段幕间的完整正文、竖向时间轴、英雄图鉴、世界观设定与生灵图鉴。
+八章正篇 + 两段幕间的完整正文、竖向时间轴、英雄图鉴、世界观设定与生灵图鉴。
 
 - 线上地址：<https://zonas-liu.github.io/agemonia-chronicle/>
 - 技术栈：Vite + React + TypeScript + Tailwind CSS + shadcn/ui

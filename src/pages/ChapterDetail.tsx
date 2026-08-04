@@ -38,6 +38,10 @@ export default function ChapterDetail({ id }: { id: string }) {
         <img
           src={`images/banner-${chapter.id}.jpg`}
           alt=""
+          onError={(e) => {
+            const wrap = e.currentTarget.closest('div')
+            if (wrap) wrap.style.display = 'none'
+          }}
           className="h-full w-full scale-110 object-cover opacity-[0.12] blur-2xl"
         />
         <div className="absolute inset-0 bg-[#0a0e1acc]" />
@@ -64,7 +68,15 @@ export default function ChapterDetail({ id }: { id: string }) {
       {/* 右侧栏：本章指引卡（宽屏显示） */}
       <aside className="fixed right-5 top-28 z-20 hidden w-44 xl:block 2xl:right-10">
         <div className="night-card overflow-hidden">
-          <img src={`images/banner-${chapter.id}.jpg`} alt="" className="h-24 w-full object-cover" />
+          <img
+            src={`images/banner-${chapter.id}.jpg`}
+            alt=""
+            onError={(e) => {
+              const wrap = e.currentTarget.closest('div')
+              if (wrap) wrap.style.display = 'none'
+            }}
+            className="h-24 w-full object-cover"
+          />
           <div className="space-y-1.5 p-3.5 text-[11px] leading-5 text-[#8fa3cf]">
             <p className="font-serif-sc text-xs tracking-[0.25em] text-[#d9b64f]">本 章 指 引</p>
             <p>📍 {chapter.location}</p>
@@ -125,6 +137,10 @@ export default function ChapterDetail({ id }: { id: string }) {
             src={`images/banner-${chapter.id}.jpg`}
             alt={`${chapter.shortTitle} · 场景插画`}
             loading="lazy"
+            onError={(e) => {
+              const wrap = e.currentTarget.closest('div')
+              if (wrap) wrap.style.display = 'none'
+            }}
             className="w-full rounded-lg border border-[#a9882f33] shadow-[0_20px_60px_rgba(0,0,0,0.6)]"
           />
           <p className="mt-3 text-center text-[11px] tracking-[0.2em] text-[#5a627a]">
