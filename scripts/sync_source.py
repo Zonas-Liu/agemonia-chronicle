@@ -15,7 +15,7 @@ REPO = "Zonas-Liu/agemonia-chronicle"
 BRANCH = "main"
 ROOT = Path(__file__).resolve().parent.parent
 EXCLUDE_DIRS = {"node_modules", "dist", ".git", ".bin"}
-EXCLUDE_FILES = {".DS_Store"}
+EXCLUDE_FILES = {".DS_Store", "local.env"}
 
 
 def api(method: str, path: str, token: str, payload: dict | None = None):
