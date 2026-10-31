@@ -16,7 +16,7 @@ export default function Chronicle() {
         <p className="text-center text-xs tracking-[0.5em] text-[#a9882f]">THE CHRONICLE</p>
         <h1 className="mt-3 text-center font-serif-sc text-4xl tracking-[0.3em] text-[#f0e6cd]">编年史</h1>
         <p className="mx-auto mt-4 max-w-xl text-center text-sm leading-7 text-[#a9b4cc]">
-          八章正篇与两段幕间，一条时间轴。点击任意节点，细读该章完整正文、定场诗与战报。
+          九章正篇与两段幕间，一条时间轴。点击任意节点，细读该章完整正文、定场诗与战报。
         </p>
       </Reveal>
 

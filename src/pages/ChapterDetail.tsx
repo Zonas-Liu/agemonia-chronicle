@@ -14,6 +14,72 @@ function OrnamentDivider() {
   )
 }
 
+interface ChapterScene {
+  src: string
+  anchor: string
+  title: string
+  caption: string
+}
+
+const CHAPTER_SCENES: Record<string, ChapterScene[]> = {
+  ch7: [
+    {
+      src: 'images/scene-ch7-door.jpg',
+      anchor: '他日再来',
+      title: '奇彻木门',
+      caption: '斯凯福德废墟深处，四人立誓他日重返。',
+    },
+    {
+      src: 'images/scene-ch7-spider.jpg',
+      anchor: '像在等待某个只有它听得见的召唤',
+      title: '蛛穴死斗',
+      caption: '她把后退的冲动咽了回去——身后是刚脱困的艾恩兽。',
+    },
+  ],
+  ch8: [
+    {
+      src: 'images/scene-ch8-pillar.jpg',
+      anchor: '是同族的手笔',
+      title: '先民巨柱与血岩',
+      caption: '月光银的辉光沿大理石缓缓流转，血岩在柱脚一明一灭。',
+    },
+    {
+      src: 'images/scene-ch8-graznak.jpg',
+      anchor: '她的吼声里带着血味',
+      title: '独抗裂隙领主',
+      caption: '盾不是墙，盾是承诺——她在，身后的人就在。',
+    },
+    {
+      src: 'images/scene-ch8-portal.jpg',
+      anchor: '传送门闭合了',
+      title: '十一步封印',
+      caption: '符文归位，强风倒卷；力竭的驼格尔仍横在魔法阵之前。',
+    },
+  ],
+  ch9: [
+    {
+      src: 'images/scene-ch9-shrine.jpg',
+      anchor: '是传说中的马祖拉克之戒',
+      title: '死亡女神的神龛',
+      caption: '三枚符文石归位，蛇像的钻石眼亮起愉悦的暖光。',
+    },
+  ],
+}
+
+function SceneFigure({ scene }: { scene: ChapterScene }) {
+  return (
+    <Reveal className="relative left-1/2 my-10 w-[min(calc(100vw-2rem),56rem)] -translate-x-1/2">
+      <figure className="overflow-hidden rounded-lg border border-[#a9882f33] bg-[#0d1221] shadow-[0_20px_60px_rgba(0,0,0,0.5)]">
+        <img src={scene.src} alt={scene.title} loading="lazy" className="w-full object-cover" />
+        <figcaption className="border-t border-[#a9882f22] px-5 py-4 text-center">
+          <p className="font-serif-sc text-sm tracking-[0.3em] text-[#d9b64f]">◈ {scene.title} ◈</p>
+          <p className="mt-2 text-xs leading-6 text-[#8fa3cf]">{scene.caption}</p>
+        </figcaption>
+      </figure>
+    </Reveal>
+  )
+}
+
 export default function ChapterDetail({ id }: { id: string }) {
   const chapter = getChapter(id)
 
@@ -156,16 +222,19 @@ export default function ChapterDetail({ id }: { id: string }) {
           if (b.kind === 'h2') return <h2 key={i} className="chapter-h2">{b.text}</h2>
           const dropcap = !firstParaDone
           firstParaDone = true
+          const scenes = (CHAPTER_SCENES[id] ?? []).filter((scene) => b.text.includes(scene.anchor))
           return (
-            <p
-              key={i}
-              className={cn(
-                'mb-5 text-[0.95rem] leading-[1.95] text-[#c6cddd]',
-                dropcap && 'dropcap',
-              )}
-            >
-              <RichText text={b.text} />
-            </p>
+            <div key={i}>
+              <p
+                className={cn(
+                  'mb-5 text-[0.95rem] leading-[1.95] text-[#c6cddd]',
+                  dropcap && 'dropcap',
+                )}
+              >
+                <RichText text={b.text} />
+              </p>
+              {scenes.map((scene) => <SceneFigure key={scene.src} scene={scene} />)}
+            </div>
           )
         })}
 

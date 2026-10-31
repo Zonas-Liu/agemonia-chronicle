@@ -44,10 +44,10 @@ function Starfield({ count = 90 }: { count?: number }) {
 }
 
 const STATS = [
-  { label: '已历章节', value: '8 章', note: '八章正篇 · 两段幕间' },
-  { label: '团队状态', value: '全员存活', note: '死亡物品清单：仅蘑菇若干' },
+  { label: '已历章节', value: '9 章', note: '九章正篇 · 两段幕间' },
+  { label: '团队状态', value: '全员存活', note: '死亡树林之战 · 全员带伤归来' },
   { label: '信标进度', value: '1 / 3', note: '艾伊恩宝珠已归位裂天者' },
-  { label: '当前使命', value: '寻找双珠', note: '奥古法宝珠 · 菲洛森宝珠' },
+  { label: '当前使命', value: '寻找菲洛森宝珠', note: '奥古法宝珠已取得 · 尚未归位' },
 ]
 
 export default function Home() {
@@ -134,13 +134,13 @@ export default function Home() {
                 <p className="font-serif-sc text-lg tracking-[0.2em] text-[#9ccbf5]">石首的谕示</p>
                 <p className="mt-3 text-sm leading-7 text-[#b8c0d8]">
                   「汝等必须点亮信标，以庇护众生免受暗克苏的腐化。」艾伊恩宝珠已归位裂天者中央容器；
-                  魔法之球<strong className="hl-gold">奥古法宝珠</strong>的秘密掌握在宝石切割师手中，
-                  自然之球<strong className="hl-gold">菲洛森宝珠</strong>的奥秘为最睿智的术士所通晓。
+                  <strong className="hl-gold">奥古法宝珠</strong>已在刀锋荆棘之柱下取得，
+                  自然之球<strong className="hl-gold">菲洛森宝珠</strong>的奥秘仍为最睿智的术士所通晓。
                   而黑暗之球暗克苏宝珠——切不可寻觅。
                 </p>
               </div>
-    <a href="#/chapter/ch8" className="shrink-0 rounded border border-[#a9882f66] px-5 py-2.5 font-serif-sc text-sm tracking-[0.25em] text-[#d9b64f] transition-colors hover:bg-[#a9882f1e]">
-      回顾第八章 →
+              <a href="#/chapter/ch9" className="shrink-0 rounded border border-[#a9882f66] px-5 py-2.5 font-serif-sc text-sm tracking-[0.25em] text-[#d9b64f] transition-colors hover:bg-[#a9882f1e]">
+                回顾第九章 →
               </a>
             </div>
           </div>
@@ -187,9 +187,9 @@ export default function Home() {
             <img src="images/bg_dark.jpg" alt="" className="absolute inset-0 h-full w-full object-cover opacity-25 transition-opacity group-hover:opacity-35" />
             <div className="relative">
               <p className="text-xs tracking-[0.4em] text-[#a9882f]">THE CHRONICLE</p>
-              <h3 className="mt-3 font-serif-sc text-3xl tracking-[0.25em] text-[#f0e6cd] sm:text-4xl">编年史 · 八章</h3>
+              <h3 className="mt-3 font-serif-sc text-3xl tracking-[0.25em] text-[#f0e6cd] sm:text-4xl">编年史 · 九章</h3>
               <p className="mt-4 max-w-2xl text-sm leading-7 text-[#a9b4cc]">
-                从琥珀之门的咆哮，到裂天者塔顶的谕示。竖向时间轴串起每一章的地点、引子与完整正文，
+                从琥珀之门的咆哮，到死亡树林的六首巨兽。竖向时间轴串起每一章的地点、引子与完整正文，
                 附定场诗、战报与出场人物表。
               </p>
               <span className="mt-6 inline-block font-serif-sc text-lg tracking-[0.3em] text-[#d9b64f] transition-transform group-hover:translate-x-2">

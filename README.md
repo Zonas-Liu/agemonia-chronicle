@@ -1,7 +1,7 @@
 # 啊对对队 · 阿格莫尼亚编年史
 
 一场仍在进行中的 [Agemonia](https://agemonia.com) 跑团战役记录网站：
-八章正篇 + 两段幕间的完整正文、竖向时间轴、英雄图鉴、世界观设定与生灵图鉴。
+九章正篇 + 两段幕间的完整正文、竖向时间轴、英雄图鉴、世界观设定与生灵图鉴。
 
 - 线上地址：<https://zonas-liu.github.io/agemonia-chronicle/>
 - 技术栈：Vite + React + TypeScript + Tailwind CSS + shadcn/ui
@@ -23,6 +23,8 @@ website/
 ├── public/images/        # 美术素材（官方 + AI 生成队徽，全部本地化）
 ├── scripts/
 │   ├── gen-chapters.py   # 从 ../docs/*.md 逐字转录生成章节正文
+│   ├── generate_scene.py # 按场景名生成章节插图（含提示词与参考图）
+│   ├── process_scenes.py # 将原图裁压为 1600×850 网站素材
 │   ├── deploy_pages.py   # 部署 dist/ 到 gh-pages 分支（走 GitHub API）
 │   └── sync_source.py    # 同步源码到 main 分支（走 GitHub API）
 └── docs/（仓库外，上级目录）# 跑团正文 Markdown，内容的唯一来源
